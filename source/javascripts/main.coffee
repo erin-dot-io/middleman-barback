@@ -1,3 +1,3 @@
 $ ->
-  $('.welcome').mousedown ->
+  $('h1').click ->
     console.log 'Hello'
