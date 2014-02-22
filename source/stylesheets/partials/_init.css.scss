@@ -5,7 +5,7 @@
 //  put all non-directly compiled, globally required CSS here      //
 //  (variables, mixins, librabry includes like bourbon/neat, etc)  //
 //                                                                 //
-//  add "@import 'initialize';" to the top of every scss partial   //
+//  add "@import 'init';" to the top of every scss partial         //
 //                                                                 //
 /////////////////////////////////////////////////////////////////////
 
@@ -28,20 +28,16 @@
   @else if $screen == 'desktop'             {@include media(min-width 1001px, 12) {@content;}}
   @else if $screen == 'desktop-narrow'      {@include media(max-width 1000px, 12) {@content;}}
   @else if $screen == 'desktop-narrow-only' {@include media(min-width 769px max-width 1000px, 12) {@content;}}
-  @else if $screen == 'tablet'              {@include media(max-width 768px, 6) {@content;}}
-  @else if $screen == 'tablet-only'         {@include media(min-width 640px max-width 768px, 6) {@content;}}
-  @else if $screen == 'phone-wide'          {@include media(max-width 639px, 6) {@content;}}
-  @else if $screen == 'phone-wide-only'     {@include media(min-width 480px max-width 639px, 6) {@content;}}
-  @else if $screen == 'phone'               {@include media(max-width 479px, 4) {@content;}}
+  @else if $screen == 'tablet'              {@include media(max-width 768px, 12) {@content;}}
+  @else if $screen == 'tablet-only'         {@include media(min-width 640px max-width 768px, 12) {@content;}}
+  @else if $screen == 'phone-wide'          {@include media(max-width 639px, 12) {@content;}}
+  @else if $screen == 'phone-wide-only'     {@include media(min-width 480px max-width 639px, 12) {@content;}}
+  @else if $screen == 'phone'               {@include media(max-width 479px, 12) {@content;}}
   @else if $screen == 'not-phone'           {@include media(min-width 480px) {@content;}}
   @else if $screen == 'netbook-11'          {@media (max-height: 600px) {@content;}}
   @else if $screen == 'netbook-13'          {@media (max-height: 790px) {@content;}}
   @else if $screen == 'ratio-small'         {@media all and (min-width: 1670px), (max-height: 639px) {@content;}}
-  @else if $screen == 'retina' {
-    @media (min--moz-device-pixel-ratio: 1.5), (-o-min-device-pixel-ratio: 3/2), (-webkit-min-device-pixel-ratio: 1.5), (min-resolution: 1.5dppx) {
-      @content;
-    }
-  }
+  @else if $screen == 'retina'              {@media (min--moz-device-pixel-ratio: 1.5), (-o-min-device-pixel-ratio: 3/2), (-webkit-min-device-pixel-ratio: 1.5), (min-resolution: 1.5dppx) {@content;}}
 }
 
 // css-arrow mixin
@@ -127,4 +123,15 @@
 @mixin fill($width: 100%) {
   @include box-sizing(border-box);
   width: $width;
+}
+
+@mixin font-smoothing($value: on) {
+    @if $value == on {
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+    }
+    @else if $value == off {
+        -webkit-font-smoothing: subpixel-antialiased;
+        -moz-osx-font-smoothing: auto;
+    }
 }
