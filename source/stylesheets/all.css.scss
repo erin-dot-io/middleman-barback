@@ -1,8 +1,12 @@
 //= require_self
 
-// **** normalize (reset) and globals always come first **** //
+// **** normalize (reset) and bitters scaffolding always come first **** //
 //= require partials/_normalize
-//= require partials/_globals
+//= require partials/bitters/_bitters
 
 // **** place all partials here in order of specificity **** //
-//= require partials/_grid
+
+
+// **** helpers and shame css always come last **** //
+//= require partials/_helpers
+//= require partials/_shame
